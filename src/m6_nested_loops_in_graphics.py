@@ -107,7 +107,7 @@ def draw_L(window, circle, r, c):
             new_circle.attach_to(window)
             window.render(0.1)
             x = x +(2 * radius)
-        y= y +2 * radius
+        y = y +2 * radius
         x = original_x
 
 def run_test_draw_wall_on_right():
@@ -151,13 +151,17 @@ def draw_wall_on_right(rectangle, n, window):
     # ------------------------------------------------------------------
     x = rectangle.get_upper_right_corner()
     y = rectangle.get_lower_left_corner()
+    dx = rectangle.get_upper_left_corner().x - rectangle.get_upper_right_corner().x
+    dy = rectangle.get_upper_left_corner().y - rectangle.get_lower_left_corner().y
     for j in range(n):
         for k in range(j):
             new_rect = rg.Rectangle(x, y)
             new_rect.attach_to(window)
             window.render(.1)
-            x.y = x.y + n*n
-            y.y = y.y + n*n
+            x.y = x.y - dy
+            y.y = y.y - dy
+        x.x = x.x + dx
+        y.x = y.x + dx
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
