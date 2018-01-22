@@ -209,9 +209,13 @@ def alternating_brackets(m, n):
     #   in this or the other problems in this module, as doing so
     #   would defeat the goal of providing practice at loops within loops.
     # ------------------------------------------------------------------
-    for j in range(m):
-        for k in range(m+n-j):
-            print('[')
+    for j in range(m, n-1, -1):
+        for k in range(j):
+            if k % 2 == 0:
+                print('[', end='')
+            if k % 2 == 1:
+                print(']', end='')
+        print()
 
 def run_test_triangle_same_number_in_each_row():
     """ Tests the    triangle_same_number_in_each_row    function. """
