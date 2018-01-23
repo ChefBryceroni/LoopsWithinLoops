@@ -146,22 +146,38 @@ def draw_wall_on_right(rectangle, n, window):
     and n is a small, positive integer.
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # done: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
-    x = rectangle.get_upper_right_corner()
-    y = rectangle.get_lower_left_corner()
+    one = rectangle.get_upper_right_corner()
+    start = rectangle.get_upper_right_corner()
+    two = rectangle.get_lower_left_corner()
+    start2 = rectangle.get_lower_left_corner()
     dx = rectangle.get_upper_left_corner().x - rectangle.get_upper_right_corner().x
     dy = rectangle.get_upper_left_corner().y - rectangle.get_lower_left_corner().y
+    for i in range(n + 1):
+        for k in range(i):
+            rect = rg.Rectangle(one, two)
+            rect.attach_to(window)
+            one.x = one.x + dx
+            two.x = two.x + dx
+        one.y = one.y - dy
+        two.y = two.y - dy
+        one.x = start.x
+        two.x = start2.x
+    window.render()
+
+
+
+    '''
     for j in range(n):
         for k in range(j):
-            new_rect = rg.Rectangle(x, y)
+            new_rect = rg.Rectangle(one, two)
             new_rect.attach_to(window)
             window.render(.1)
-            x.y = x.y - dy
-            y.y = y.y - dy
+            one.x = one.x - dx
         x.x = x.x + dx
-        y.x = y.x + dx
+        y.x = y.x + dx'''
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
